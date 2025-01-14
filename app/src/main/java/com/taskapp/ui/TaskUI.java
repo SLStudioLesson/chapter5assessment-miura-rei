@@ -196,7 +196,7 @@ public class TaskUI {
                     inputChangeInformation();
                         break;
                     case "2":
-                    displayMenu();
+                    flag = false;
                         break;
                     default:
                         System.out.println("選択肢が誤っています。1~2の中から選択してください。");

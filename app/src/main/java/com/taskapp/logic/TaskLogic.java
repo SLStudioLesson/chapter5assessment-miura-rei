@@ -91,7 +91,7 @@ public class TaskLogic {
         }
 
         // タスクとログの情報を追加
-        taskDataAccess.save(new Task(code, name, repUserCode, loginUser));
+        taskDataAccess.save(new Task(code, name, 0, userDataAccess.findByCode(repUserCode)));
         logDataAccess.save(new Log(code, repUserCode, 0, LocalDate.now()));
     }
 
