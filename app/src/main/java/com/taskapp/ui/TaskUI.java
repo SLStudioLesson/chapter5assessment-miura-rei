@@ -184,6 +184,7 @@ public class TaskUI {
         boolean flag = true;
         while (flag) {
             try {
+                System.out.println();
                 System.out.println("以下1~2から好きな選択肢を選んでください。");
                 System.out.println("1. タスクのステータス変更, 2. メインメニューに戻る");
                 System.out.print("選択肢：");
@@ -218,7 +219,7 @@ public class TaskUI {
         boolean flag = true;
         while (flag) {
             try {
-                System.out.println("ステータスを変更するタスクコードを入力してください：");
+                System.out.print("ステータスを変更するタスクコードを入力してください：");
                 String taskCode = reader.readLine();
 
                 if (!isNumeric(taskCode)) {
@@ -228,7 +229,7 @@ public class TaskUI {
 
                 System.out.println("どのステータスに変更するか選択してください。");
                 System.out.println("1. 着手中, 2. 完了");
-                System.out.println("選択肢：");
+                System.out.print("選択肢：");
                 String status = reader.readLine();
 
                 if (!isNumeric(status)) {
@@ -241,8 +242,9 @@ public class TaskUI {
                 }
 
                 try {
-                    taskLogic.changeStatus(Integer.parseInt(taskCode), 0, loginUser);
+                    taskLogic.changeStatus(Integer.parseInt(taskCode), Integer.parseInt(status), loginUser);
                     flag = false;
+                    System.out.println("ステータスの変更が完了しました。");
                 }
                 catch (AppException e) {
                     System.out.println(e.getMessage());

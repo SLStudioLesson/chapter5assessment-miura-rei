@@ -108,10 +108,14 @@ public class TaskLogic {
      */
     public void changeStatus(int code, int status, User loginUser) throws AppException {
         Task task = taskDataAccess.findByCode(code);
-        if (taskDataAccess.findByCode(code).getStatus() == 0 && status == 1) {
+
+        if (taskDataAccess.findByCode(code) == null) {
+            throw new AppException("存在するタスクコードを入力してください");
+        }
+        if (task.getStatus() == 0 && status == 1) {
             task.setStatus(status);
         }
-        else if (taskDataAccess.findByCode(code).getStatus() == 1 && status == 2) {
+        else if (task.getStatus() == 1 && status == 2) {
             task.setStatus(status);
         }
         else {

@@ -117,6 +117,8 @@ public class TaskDataAccess {
     public void update(Task updateTask) {
         List<Task> taskList = findAll();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            writer.write("Code,Name,Status,Rep_User_Code");
+            writer.newLine();
             for (Task task : taskList) {
                 if (task.getCode() == updateTask.getCode()) {
                     writer.write(createLine(updateTask));
